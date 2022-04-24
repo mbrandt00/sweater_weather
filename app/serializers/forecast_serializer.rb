@@ -29,7 +29,7 @@ class ForecastSerializer
     end
   end
   attributes :hourly_weather do |object| 
-    object.hourly.each do |hour| 
+    object.hourly.first(8).each do |hour| 
       {
         time: hour.time, 
         conditions: hour.conditions, 
