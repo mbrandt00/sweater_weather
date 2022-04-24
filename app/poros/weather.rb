@@ -9,7 +9,7 @@ class Weather
         @current = CurrentWeather.new(data[:current], @time_zone)
         @daily = data[:daily].first(5).map {|day| 
             DailyWeather.new(day, @time_zone)}
-        @hourly = data[:hourly].first(8).map {|hour|
+        @hourly = data[:hourly].map {|hour|
             HourlyWeather.new(hour, @time_zone)}
     end
 end
