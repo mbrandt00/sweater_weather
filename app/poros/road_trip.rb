@@ -1,6 +1,6 @@
 require './app/poros/roadtrip_weather'
 class RoadTrip 
-    attr_reader :start_city, :end_city, :temperature, :conditions, :id, :travel_time
+    attr_reader :start_city, :end_city, :temperature, :conditions, :id, :travel_time, :end_state
     def initialize(data) 
         @id = nil
         @travel_time = Time.at(data[:time]).utc.strftime "%H hour(s) %M minute(s)"
@@ -8,6 +8,7 @@ class RoadTrip
         @end_lng = data[:locations].second[:latLng][:lng]
         @start_city = data[:locations].first[:adminArea5]
         @end_city = data[:locations].second[:adminArea5]
+        @end_state = data[:locations].first[:adminArea3]
         weather_at_eta = calculate_weather_at_eta(@end_lat, @end_lng, data[:time])
         @temperature = weather_at_eta.temperature
         @conditions = weather_at_eta.conditions

@@ -6,7 +6,6 @@ class OpenWeatherService
     end
 
     def self.all_weather(lat, lon)
-        #onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
         response = conn.get("onecall") do |req|
             req.params['lat'] = lat
             req.params['units'] = 'imperial'

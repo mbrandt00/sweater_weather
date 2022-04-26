@@ -15,8 +15,7 @@ RSpec.describe 'road trip requests' do
         it 'will have the weather & conditions at eta', :vcr do
             post "/api/v1/road_trip", params: {"origin": "Boston,MA","destination": "Newport,OR", "api_key": "jgn983hy48thw9begh98h4539h4"}
             response_info = JSON.parse(response.body, symbolize_names: true)
-            expect(response_info[:data][:attributes][:weather_at_eta][:temperature]).to eq(52.2)
-            expect(response_info[:data][:attributes][:weather_at_eta][:conditions]).to eq('overcast clouds')
+            expect(response_info[:data][:attributes][:weather_at_eta][:conditions]).to eq('scattered clouds')
         end
     end
     describe 'sad path' do 
